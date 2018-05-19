@@ -6,7 +6,7 @@ ruby '2.5.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.0'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -29,6 +29,9 @@ gem 'jquery-rails'
 
 # Charts
 gem 'chartkick'
+
+# Postgrsql
+gem 'pg'
 
 # Webpacker needed for Stimulus: https://github.com/rails/webpacker#stimulus
 gem 'webpacker', '~> 3.5'
