@@ -9,7 +9,7 @@ module Admin
 
     def edit
       @receipt = Receipt.find(params[:id])
-      2.times { @receipt.lines.build }
+      20.times { @receipt.lines.build }
     end
 
     def update
