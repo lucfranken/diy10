@@ -32,6 +32,7 @@ module Admin
       params.require(:receipt).permit(:value,
                                       :supplier_id,
                                       :category_id,
+                                      :status,
                                       images: [],
                                       lines_attributes: %i[
                                         id

@@ -36,7 +36,6 @@
           <%= form.label :supplier_id %><br>
           <%= form.collection_select(:supplier_id, Supplier.all, :id, :name, :prompt => 'Select' ) %>
           <%= link_to 'Leverancier toevoegen', new_admin_supplier_path %>
-
         </p>
 
         <p>
@@ -44,6 +43,13 @@
           <%= form.collection_select(:category_id, Category.all, :id, :name, :prompt => 'Select' ) %>
           <%= link_to 'Categorie toevoegen', new_admin_category_path %>
         </p>
+
+        <p>
+          <%= form.label :status %><br>
+          <%= form.select(:status, Receipt.statuses.keys.map {|status| [status.titleize,status]}, { selected: :processed }) %>
+        </p>
+
+        
 
         <div data-controller="receipt--lines" data-target="receipts--lines.container">
           <%= form.fields_for :lines do |l| %>
