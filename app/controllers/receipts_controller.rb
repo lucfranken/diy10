@@ -18,7 +18,7 @@ class ReceiptsController < ApplicationController
   def create
     @receipt = current_user.receipts.new(receipt_params)
 
-    @receipt.save
+    @receipt.save!
     redirect_to receipts_path
   end
 
