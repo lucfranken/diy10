@@ -1,0 +1,9 @@
+
+<p>
+  <strong>Text:</strong>
+  <%= @receipt.value %>
+  <% @receipt.images.each do |image| %>
+    <%= image_tag image.variant(resize: "200x200") %>
+    <%= image_tag(image) %>
+  <% end %>
+</p>

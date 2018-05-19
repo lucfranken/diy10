@@ -1,0 +1,13 @@
+// Place all the styles related to the Receipts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.receipts--line-amount {
+  width: 3em;
+}
+
+.receipts--line-price,
+.receipts--line-priceTotal {
+  width: 4em;
+}

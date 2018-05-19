@@ -1,0 +1,69 @@
+<%= form_with(model: [:admin, @receipt], local: true) do |form| %>
+  <div class="row">
+    <div class="col">
+      <% @receipt.images.each do |image| %>
+        <%= image_tag image.variant(resize: "500x800") %>
+      <% end %>
+    </div>
+
+    <div class="col">
+
+
+      <% if @receipt.errors.any? %>
+        <div id="error_explanation">
+          <h2>
+            <%= pluralize(@receipt.errors.count, "error") %> prohibited
+            this receipt from being saved:
+          </h2>
+          <ul>
+            <% @receipt.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div data-controller="receipts--lines" id="lines-controller">
+        <%= form.label :value %> Enter total amount:
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><%= currency_symbol %></span>
+          </div>
+          <%= form.text_field :value, { class: 'form-control', data: { target: 'receipts--lines.total', action: 'change->receipts--lines#hideOrShowContainerWhenNeeded' } } %>
+        </div>
+
+        <p>
+          <%= form.label :supplier_id %><br>
+          <%= form.collection_select(:supplier_id, Supplier.all, :id, :name, :prompt => 'Select' ) %>
+          <%= link_to 'Leverancier toevoegen', new_admin_supplier_path %>
+
+        </p>
+
+        <p>
+          <%= form.label :category_id %><br>
+          <%= form.collection_select(:category_id, Category.all, :id, :name, :prompt => 'Select' ) %>
+          <%= link_to 'Categorie toevoegen', new_admin_category_path %>
+        </p>
+
+        <div data-controller="receipt--lines" data-target="receipts--lines.container">
+          <%= form.fields_for :lines do |l| %>
+            <p data-controller="receipts--line">
+              <%= l.number_field :amount, { class: 'receipts--line-amount', data: { target: 'receipts--line.amount receipts--lines.amount', action: 'change->receipts--lines#calculateTotal change->receipts--line#calculate ' } } %>x
+              <%= l.text_field :description %>
+              <%= l.text_field :price, { class: 'receipts--line-price',  data: { target: 'receipts--line.price receipts--lines.price', action: 'change->receipts--lines#calculateTotal change->receipts--line#calculate ' } } %>
+              <%= l.text_field :price_total, { class: 'receipts--line-priceTotal',  readonly: true, data: { target: 'receipts--line.priceTotal receipts--lines.priceTotal'} } %>
+            </p>
+          <% end %>
+
+          <p data-controller="receipt--lines" data-target="receipts--lines.submitContainer">
+            <%= form.submit %>
+          </p>
+          
+
+        </div>
+      </div>
+     
+    </div>
+  </div>
+
+ <% end %>

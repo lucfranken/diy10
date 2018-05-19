@@ -1,0 +1,5 @@
+
+<%= form_with scope: :receipt, url: receipts_path, local: true do |form| %>
+  <%= form.file_field :images, multiple: true, accept: "image/*", capture: "camera" %>
+  <%= form.submit %>
+<% end %>

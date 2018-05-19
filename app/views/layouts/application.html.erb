@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Myapp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application' %>
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+
+      <%= yield %>
+    </div>
+
+    <% if current_user %>
+    <footer class="footer">
+      <div class="container">
+        <ul class="nav justify-content-center nav-fill">
+          <li class="nav-item">
+            <%= link_to 'Welcome', root_path() %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Camera', new_receipt_path() %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Receipts', receipts_path() %>
+          </li>
+          <li><%= current_user.email %></li>
+        </ul>
+
+      </div>
+    </footer>
+    <% end %>
+  </body>
+</html>

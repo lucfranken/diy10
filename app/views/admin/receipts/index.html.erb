@@ -1,0 +1,22 @@
+<h1>Te verwerken</h1>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Text</th>
+    <th colspan="3"></th>
+  </tr>
+ 
+  <% @receipts.each do |receipt| %>
+    <tr>
+      <td><%= receipt.id %></td>
+      <td><%= receipt.status %></td>
+      <td><%= humanized_money_with_symbol receipt.value %></td>
+
+      <% receipt.images.each do |image| %>
+        <td><%= image_tag image.variant(resize: "200x200") %></td>
+      <% end %>
+
+      <td><%= link_to 'Verwerken', edit_admin_receipt_path(receipt) %></td>
+    </tr>
+  <% end %>
+</table>

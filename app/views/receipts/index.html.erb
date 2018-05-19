@@ -1,0 +1,20 @@
+<h1>Jouw bonnen</h1>
+<div>
+  <% @receipts.each do |receipt| %>
+    <div>
+
+      
+      <p>
+        <% receipt.images.each do |image| %>
+          <%= link_to image_tag(image.variant(resize: "200x200")), receipt_path(receipt) %>
+        <% end %>
+      </p>
+
+      <p>
+        <%= humanized_money_with_symbol receipt.value %> @ <%= receipt.supplier && receipt.supplier.name %>
+      </p>
+
+      <td><%= link_to 'Show', receipt_path(receipt) %></td>
+    </div>
+  <% end %>
+</div>
