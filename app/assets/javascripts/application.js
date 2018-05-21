@@ -23,3 +23,5 @@
 
 //= require Chart.bundle
 //= require chartkick
+
+//= require font_awesome5

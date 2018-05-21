@@ -27,7 +27,7 @@ gem 'bootstrap', '~> 4.1.1'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 gem 'jquery-rails'
 
-gem "font-awesome-rails"
+gem 'font_awesome5_rails'
 
 # Using S3 via Heroku bucketeer plugin
 gem "aws-sdk-s3", require: false
