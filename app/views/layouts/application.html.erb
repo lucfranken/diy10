@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Myapp</title>
+    <title>Klus-Snel.nl</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -21,37 +21,6 @@
       <%= yield %>
     </div>
 
-    <% if current_user %>
-    <footer class="footer">
-      <div class="container">
-        <ul class="nav justify-content-center nav-fill">
-          <li class="nav-item">            
-            <%= link_to root_path, class: "nav-link" do %>
-              <%= fa_icon "camera-retro" %><br>
-              <span>Overview</span>
-            <% end %>
-          </li>
-          <li class="nav-item">
-            <%= link_to new_receipt_path, class: "nav-link" do %>
-              <%= fa_icon "camera-retro" %><br>
-              <span>Camera</span>
-            <% end %>
-          </li>
-          <li class="nav-item">            
-            <%= link_to edit_user_registration_path, class: "nav-link" do %>
-              <%= fa_icon "camera-retro" %><br>
-              <span>Account</span>
-            <% end %>
-          </li>
-          <li class="nav-item">            
-            <%= link_to destroy_user_session_path, method: :delete do %>
-              <%= fa_icon "camera-retro" %><br>
-              <span>Logout</span>
-            <% end %>
-          </li>
-        </ul>
-      </div>
-    </footer>
-    <% end %>
+    <%= render 'footer_menu' %>
   </body>
 </html>

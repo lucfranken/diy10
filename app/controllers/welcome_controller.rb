@@ -5,6 +5,11 @@ class WelcomeController < ApplicationController
   before_action :authenticate_user!
 
   def index
+
+    if current_user.receipts.count == 0
+      render 'tutorial'
+    end
+
     @total = current_user.receipts.processed.sum(:value_cents) / 100
 
     all = current_user.receipts.processed.includes(:category).group('categories.name').sum(:value_cents)

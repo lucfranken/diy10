@@ -1,0 +1,13 @@
+
+<%= form_with scope: :receipt, url: receipts_path, local: true do |form| %>
+
+  <label for="file-upload" class="custom-file-upload">
+    <i class="fa fa-camera-retro"></i>
+  </label>
+
+  <%= form.file_field :images, multiple: true, accept: "image/*", id: "file-upload", onchange: "javascript:this.form.submit()" %>
+  <!--
+    Not needed because we auto-submit
+    <%= form.submit %>
+  -->
+<% end %>
