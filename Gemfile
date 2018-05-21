@@ -29,6 +29,9 @@ gem 'jquery-rails'
 
 gem "font-awesome-rails"
 
+# Using S3 via Heroku bucketeer plugin
+gem "aws-sdk-s3", require: false
+
 # Charts
 gem 'chartkick'
 
