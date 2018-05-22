@@ -16,6 +16,7 @@ class ReceiptsController < ApplicationController
   end
 
   def create
+    AdminMailer.receipt_email.deliver_now
     @receipt = current_user.receipts.new(receipt_params)
 
     @receipt.save!
