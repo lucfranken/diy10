@@ -18,6 +18,7 @@ gem 'uglifier', '>= 1.3.0'
 
 # Authentication https://github.com/plataformatec/devise
 gem 'devise'
+gem 'devise-i18n'
 
 # Money handling
 gem 'money-rails', '~>1'
