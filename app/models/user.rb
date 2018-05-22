@@ -14,11 +14,14 @@ class User < ApplicationRecord
     admin: 1
   }
 
-  after_initialize :set_default_role, if: :new_record?
-
-  def set_default_role
-    self.role ||= :user
-  end
+  # This code is adviced but keeps making my user admin when loggin in.
+  # DANGEROUS I think so disabled.
+  # Original advice:
+  # https://github.com/plataformatec/devise/wiki/How-To:-Add-an-Admin-Role#option-3-using-active-record-enum
+  # after_initialize :set_default_role, if: :new_record?
+  # def set_default_role
+  #   self.role ||= :user
+  # end
 
   # Has any receipt at all
   def hasReceipts
