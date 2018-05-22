@@ -7,7 +7,13 @@ export default class extends Controller {
   }
 
   connect() {
-    this.show();
+    this.showWhenNeeded();
+  }
+
+  showWhenNeeded() {
+    if(this.data.get('show-popover') === 'true') {
+      this.show();
+    }
   }
 
   show() {

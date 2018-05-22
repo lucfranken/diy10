@@ -24,6 +24,6 @@
       <%= yield %>
     </div>
 
-    <%= render 'footer_menu' %>
+    <%= render 'footer_menu', locals: { showPopover: !current_user.hasReceipts } %>
   </body>
 </html>

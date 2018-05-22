@@ -1,0 +1,11 @@
+<h3>Dankje!</h3>
+
+<p>Op dit moment verwerken we voor je: </p>
+
+<% if @amountProcessing > 1 %>
+  <h4><%= @amountProcessing %> bonnen</h4>
+<% else %>
+  <h4>1 bon</h4>
+<% end %>
+
+<p>Terwijl wij bezig zijn kan je gewoon bonnen toe blijven voegen!</p>
