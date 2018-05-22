@@ -37,4 +37,11 @@ class User < ApplicationRecord
   def hasProcessedReceipts
     Current.user.receipts.processed.any?
   end
+
+
+  after_create :send_admin_mail
+  def send_admin_mail
+    AdminMailer.registration_email.deliver_now
+  end
+
 end
