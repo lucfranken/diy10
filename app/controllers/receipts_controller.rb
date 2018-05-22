@@ -5,7 +5,7 @@ class ReceiptsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @receipts = current_user.receipts.order('created_at DESC').all.with_attached_images.includes(:supplier)
+    @receipts = current_user.receipts.order('created_at DESC').processed.with_attached_images.includes(:supplier)
   end
 
   def new; end
@@ -25,6 +25,6 @@ class ReceiptsController < ApplicationController
   private
 
   def receipt_params
-    params.require(:receipt).permit(:value, images: [])
+    params.require(:receipt).permit(:q, :value, images: [])
   end
 end

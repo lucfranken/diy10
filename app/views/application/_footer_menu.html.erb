@@ -3,18 +3,26 @@
   <footer class="footer">
     <div class="container" data-tutorial-show-popover="<%= locals[:showPopover] %>" data-controller="tutorial" data-target="tutorial.menu" data-container="body" data-toggle="popover" data-placement="top" data-content="Begin met het maken van een foto van een bonnetje!">
 
-      <ul class="nav justify-content-center nav-fill">
+      <ul class="nav justify-content-center nav-pills nav-fill">
         <li class="nav-item">            
-          <%= link_to root_path, class: "nav-link" do %>
+          <%= link_to root_path, class: "nav-link #{current_controller('welcome')}" do %>
             <%= fa_icon "chart-pie" %><br>
-            <span>Overview</span>
+            <span>Overzicht</span>
           <% end %>
         </li>
+        <% if !locals[:showPopover] %>
+        <li class="nav-item">            
+          <%= link_to receipts_path, class: "nav-link #{current_controller('receipts')}" do %>
+            <%= fa_icon "receipt" %><br>
+            <span>Bonnen</span>
+          <% end %>
+        </li>
+        <% end %>
         <li class="nav-item">
           <%= render "receipts/camera_button" %>
         </li>
         <li class="nav-item">            
-          <%= link_to edit_user_registration_path, class: "nav-link" do %>
+          <%= link_to edit_user_registration_path, class: "nav-link #{current_controller('users')}" do %>
             <%= fa_icon "user" %><br>
             <span>Account</span>
           <% end %>

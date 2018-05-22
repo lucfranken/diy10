@@ -4,7 +4,7 @@ module Admin
   # Handles the processing of receipts internally
   class ReceiptsController < AdminController
     def index
-      @receipts = current_user.receipts.order('created_at DESC').waiting.with_attached_images
+      @receipts = Receipt.order('created_at ASC').waiting.with_attached_images
     end
 
     def edit

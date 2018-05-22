@@ -1,10 +1,23 @@
-<h3>Jouw verbouwing</h3>
-<p>Hier zie je hoe je er voor staat!</p>
+<p>
+  Totale uitgaven tot op heden: <strong><%= humanized_money_with_symbol @total %></strong>
+</p>
 
-<%= humanized_money_with_symbol @total %>
+<div data-controller="stats" data-target="chart">
+  <%= pie_chart @pie_chart_data, id: 'my-chart' %>
+</div>
 
+<% if @amountProcessing > 0 %>
+  <p>Op dit moment verwerken we nog:
+    <strong>
+      <% if @amountProcessing > 1 %>
+        <%= @amountProcessing %> bonnen
+      <% else %>
+        1 bon
+      <% end %>
+    </strong>
+  </p>
+<% end %>
 
-<%= pie_chart @pie_chart_data %>
-
-<%= link_to 'Bekijk je bonnen', receipts_path() %>
-
+<p class="text-center" style="margin-top: 4em;">
+  <%= link_to 'Bekijk al je bonnen', receipts_path, class: 'btn btn-primary' %>
+</p>

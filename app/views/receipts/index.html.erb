@@ -2,8 +2,6 @@
 <div>
   <% @receipts.each do |receipt| %>
     <div>
-
-      
       <p>
         <% receipt.images.each do |image| %>
           <%= link_to image_tag(image.variant(resize: "200x200")), receipt_path(receipt) %>

@@ -17,13 +17,18 @@
   </head>
 
   <body>
+
     <div class="container-fluid">
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
 
       <%= yield %>
+
+      <!-- Important to load after yield so div with chart is available -->
+      <%= yield :charts_js %>
+
     </div>
 
-    <%= render 'footer_menu', locals: { showPopover: !current_user.hasReceipts } %>
+    <%= render 'footer_menu', locals: { userHasReceipts: current_user.hasReceipts } %>
   </body>
 </html>
