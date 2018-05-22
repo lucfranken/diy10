@@ -47,6 +47,16 @@ Rails.application.configure do
   # 
   config.action_mailer.default_url_options = { :host => 'app.klus-snel.nl' }
 
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              ENV['MAILGUN_SMTP_SERVER'],
+    port:                 ENV['MAILGUN_SMTP_PORT'],
+    domain:               'app.klus-snel.nl',
+    user_name:            ENV['MAILGUN_SMTP_LOGIN'],
+    password:             ENV['MAILGUN_SMTP_PASSWORD'],
+    authentication:       'plain',
+    enable_starttls_auto: true }
+
   # Mount Action Cable outside main process or domain
   # config.action_cable.mount_path = nil
   # config.action_cable.url = 'wss://example.com/cable'
