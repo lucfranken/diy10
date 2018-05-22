@@ -13,9 +13,10 @@
  *= require_tree .
  *= require_self
  */
+
+$primary: rgba(240,84,34,1);
 @import "bootstrap";
 @import 'font_awesome5';
-
 
 
 // Sticky footer http://getbootstrap.com/docs/4.1/examples/sticky-footer-navbar/
