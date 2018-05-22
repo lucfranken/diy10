@@ -11,7 +11,7 @@ class User < ApplicationRecord
 
   enum role: {
     user: 0,
-    admin: 1
+    admin: 99
   }
 
   # This code is adviced but keeps making my user admin when loggin in.
