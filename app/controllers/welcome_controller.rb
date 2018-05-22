@@ -13,6 +13,7 @@ class WelcomeController < ApplicationController
       @pie_chart_data = all.each { |k, v| all[k] = v / 100 }
     elsif current_user.hasReceiptsButNoneProcessedYet
       @amountProcessing = current_user.receipts.waiting.count
+      @receipts = current_user.receipts.waiting
       render 'processing'
     else
       render 'tutorial'

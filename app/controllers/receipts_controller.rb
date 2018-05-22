@@ -19,7 +19,7 @@ class ReceiptsController < ApplicationController
     @receipt = current_user.receipts.new(receipt_params)
 
     @receipt.save!
-    redirect_to receipts_path
+    redirect_to '/'
   end
 
   private
