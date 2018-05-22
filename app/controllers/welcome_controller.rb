@@ -7,7 +7,11 @@ class WelcomeController < ApplicationController
   def index
 
     if current_user.receipts.count == 0
-      render 'tutorial'
+      if current_user.receipts.processed == 0
+        render 'processing'
+      else
+        render 'tutorial'
+      end
     end
 
     @total = current_user.receipts.processed.sum(:value_cents) / 100
