@@ -5,19 +5,19 @@ class ReceiptsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @receipts = current_user.receipts.order('created_at DESC').processed.with_attached_images.includes(:supplier)
+    @receipts = Current.project.receipts.order('created_at DESC').processed.with_attached_images.includes(:supplier)
   end
 
   def new; end
 
   def show
     # render plain: current_user.inspect
-    @receipt = current_user.receipts.find(params[:id])
+    @receipt = Current.project.receipts.find(params[:id])
   end
 
   def create
     AdminMailer.receipt_email.deliver_now
-    @receipt = current_user.receipts.new(receipt_params)
+    @receipt = Current.project.receipts.new(receipt_params)
 
     @receipt.save!
     redirect_to '/'
