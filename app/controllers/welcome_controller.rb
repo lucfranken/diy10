@@ -3,6 +3,7 @@
 # Dashboard view
 class WelcomeController < ApplicationController
   before_action :authenticate_user!
+  before_action :ensure_user_has_project!
 
   def index
 
@@ -21,4 +22,14 @@ class WelcomeController < ApplicationController
       render 'tutorial'
     end
   end
+
+  private
+
+    # This should never happen. 
+    # Likely something in the auto creation of the first project went wrong
+    def ensure_user_has_project!
+      if !Current.project
+        throw 'No project for this user available. This should never happen.'
+      end
+    end
 end

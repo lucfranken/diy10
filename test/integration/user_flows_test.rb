@@ -64,4 +64,43 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
 
     assert_select 'body.logged-in'
   end
+
+  test "normal user cannot go to admin" do
+    # back at login form
+    post new_user_session_path,
+      params: {
+        user: {
+        email: 'john@example.com',
+        password: 'passwordjohn',
+      }
+    }
+
+    assert_response :redirect
+    follow_redirect!
+
+    assert_raise RuntimeError do
+      get admin_dashboards_path
+    end
+
+    assert_raise RuntimeError do
+      get admin_suppliers_path
+    end
+  end
+
+  test "admin goes to dashboards" do
+    # back at login form
+    post new_user_session_path,
+      params: {
+        user: {
+        email: 'admin@example.com',
+        password: 'passwordadmin',
+      }
+    }
+
+    assert_response :redirect
+    follow_redirect!
+
+    assert_select '.dashboards'
+    assert_select '.logged-in-admin'
+  end
 end

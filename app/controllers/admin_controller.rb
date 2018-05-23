@@ -5,6 +5,8 @@ class AdminController < ApplicationController
   before_action :authenticate_user!
   before_action :current_user_is_admin
 
+  layout 'admin'
+
   # TODO: checks not working properly, the
 
   private

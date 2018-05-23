@@ -17,4 +17,8 @@ class ApplicationController < ActionController::Base
   def set_locale
     I18n.locale = :nl || I18n.default_locale
   end
+
+    def after_sign_in_path_for(resource)
+      resource.admin? ? admin_dashboards_path : welcome_index_path
+    end
 end

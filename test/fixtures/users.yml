@@ -1,13 +1,18 @@
 john:
-  id: '1'
   email: 'john@example.com'
   encrypted_password: <%= Devise::Encryptor.digest(User, "passwordjohn") %>
   created_at: <%= Time.now - 6.minutes %>
   updated_at: <%= Time.now - 4.minutes %>
 
 jane:
-  id: '2'
   email: 'jane@example.com'
   encrypted_password: <%= Devise::Encryptor.digest(User, "passwordjane") %>
   created_at: <%= Time.now - 6.minutes %>
   updated_at: <%= Time.now - 4.minutes %>
+
+admin:
+  email: 'admin@example.com'
+  encrypted_password: <%= Devise::Encryptor.digest(User, "passwordadmin") %>
+  created_at: <%= Time.now - 6.minutes %>
+  updated_at: <%= Time.now - 4.minutes %>
+  role: :admin
