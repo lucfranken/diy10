@@ -42,7 +42,7 @@ nl:
       locked: Je account is vergrendeld.
       not_found_in_database: Ongeldig %{authentication_keys} of wachtwoord.
       timeout: Je sessie is verlopen, meld je opnieuw aan om door te gaan.
-      unauthenticated: 
+      unauthenticated: ""
       unconfirmed: Je dient eerst je account te bevestigen.
     mailer:
       confirmation_instructions:
