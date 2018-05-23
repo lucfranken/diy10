@@ -1,4 +1,8 @@
 <h1>Te verwerken</h1>
+
+<%= link_to 'Waiting', admin_scope_path(:waiting) %>
+<%= link_to 'Processed', admin_scope_path(:processed) %>
+
 <table>
   <tr>
     <th>Title</th>
@@ -7,7 +11,7 @@
   </tr>
  
   <% @receipts.each do |receipt| %>
-    <tr>
+    <tr class="receipt-<%= receipt.id %>">
       <td><%= receipt.id %></td>
       <td><%= receipt.status %></td>
       <td><%= humanized_money_with_symbol receipt.value %></td>

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     resources :dashboards
     resources :categories
     resources :receipts
+    get "/receipts/index/:scope", to: "receipts#scoped", as: "scope"
     resources :suppliers
   end
 

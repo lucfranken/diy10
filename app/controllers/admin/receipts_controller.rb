@@ -7,6 +7,11 @@ module Admin
       @receipts = Receipt.order('created_at ASC').waiting.with_attached_images
     end
 
+    def scoped
+      @receipts = Receipt.order('created_at ASC').where(status: params[:scope]).with_attached_images
+      render 'index'
+    end
+
     def edit
       @receipt = Receipt.find(params[:id])
       20.times { @receipt.lines.build }
