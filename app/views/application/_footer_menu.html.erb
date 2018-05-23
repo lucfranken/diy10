@@ -10,14 +10,6 @@
             <span>Overzicht</span>
           <% end %>
         </li>
-        <% if !locals[:showPopover] %>
-        <li class="nav-item">            
-          <%= link_to receipts_path, class: "nav-link #{current_controller('receipts')}" do %>
-            <%= fa_icon "receipt" %><br>
-            <span>Bonnen</span>
-          <% end %>
-        </li>
-        <% end %>
         <li class="nav-item">
           <%= render "receipts/camera_button" %>
         </li>

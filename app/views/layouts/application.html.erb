@@ -29,6 +29,6 @@
 
     </div>
 
-    <%= render 'footer_menu', locals: { userHasReceipts: Current.project.hasReceipts } %>
+    <%= render 'footer_menu', locals: { showPopover: !Current.project.hasReceipts } %>
   </body>
 </html>
