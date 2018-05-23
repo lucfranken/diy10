@@ -3,7 +3,7 @@
 </p>
 
 <div data-controller="stats" data-target="chart">
-  <%= pie_chart @pie_chart_data, id: 'my-chart' %>
+  <%= pie_chart welcome_chart_per_category_path, refresh: 60, id: 'my-chart' %>
 </div>
 
 <% if @amountProcessing > 0 %>

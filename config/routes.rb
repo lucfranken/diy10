@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   devise_for :users
   
+  get "/welcome/chart_per_category", to: "welcome#chart_per_category"
+
   get 'welcome/index'
  
   root 'welcome#index'

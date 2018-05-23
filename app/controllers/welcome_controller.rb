@@ -12,15 +12,17 @@ class WelcomeController < ApplicationController
 
     if Current.project.hasProcessedReceipts
       @total = Current.project.receipts.processed.sum(:value_cents) / 100
-
-      all = Current.project.receipts.processed.includes(:category).group('categories.name').sum(:value_cents)
-      @pie_chart_data = all.each { |k, v| all[k] = v / 100 }
     elsif Current.project.hasReceiptsButNoneProcessedYet
       @receipts = Current.project.receipts.waiting
       render 'processing'
     else
       render 'tutorial'
     end
+  end
+
+  def chart_per_category
+    all = Current.project.receipts.processed.includes(:category).group('categories.name').sum(:value_cents)
+    render json: all.each { |k, v| all[k] = v / 100 }
   end
 
   private
