@@ -3,9 +3,9 @@
 <p>Op dit moment verwerken we voor je: </p>
 
 <% if @amountProcessing > 1 %>
-  <h4><%= @amountProcessing %> bonnen</h4>
+  <h4><span id="receipts-amount-processing"><%= @amountProcessing %></span> bonnen</h4>
 <% else %>
-  <h4>1 bon</h4>
+  <h4><span id="receipts-amount-processing">1</span> bon</h4>
 <% end %>
 
 <div class="row">

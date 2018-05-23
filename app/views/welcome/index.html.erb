@@ -10,9 +10,9 @@
   <p>Op dit moment verwerken we nog:
     <strong>
       <% if @amountProcessing > 1 %>
-        <%= @amountProcessing %> bonnen
+        <span id="receipts-amount-processing"><%= @amountProcessing %></span> bonnen
       <% else %>
-        1 bon
+        <span id="receipts-amount-processing">1</span> bon
       <% end %>
     </strong>
   </p>

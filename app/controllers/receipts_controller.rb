@@ -16,11 +16,13 @@ class ReceiptsController < ApplicationController
   end
 
   def create
+    # Send before saving so we know someone is trying to send something 
     AdminMailer.receipt_email.deliver_now
+
     @receipt = Current.project.receipts.new(receipt_params)
 
     @receipt.save!
-    redirect_to '/'
+    redirect_to root_path
   end
 
   private

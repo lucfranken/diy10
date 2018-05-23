@@ -2,7 +2,7 @@ require 'test_helper'
 
 # puts @response.parsed_body
 
-class ReceiptFlowsTest < ActionDispatch::IntegrationTest
+class ReceiptAdminFlowsTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
   def setup
