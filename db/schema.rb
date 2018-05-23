@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_23_132643) do
+ActiveRecord::Schema.define(version: 2018_05_23_141124) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,15 +68,15 @@ ActiveRecord::Schema.define(version: 2018_05_23_132643) do
   create_table "receipts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
     t.integer "value_cents", default: 0, null: false
     t.string "value_currency", default: "EUR", null: false
     t.integer "status", default: 0
     t.bigint "supplier_id"
     t.bigint "category_id"
+    t.bigint "project_id"
     t.index ["category_id"], name: "index_receipts_on_category_id"
+    t.index ["project_id"], name: "index_receipts_on_project_id"
     t.index ["supplier_id"], name: "index_receipts_on_supplier_id"
-    t.index ["user_id"], name: "index_receipts_on_user_id"
   end
 
   create_table "suppliers", force: :cascade do |t|
@@ -107,6 +107,6 @@ ActiveRecord::Schema.define(version: 2018_05_23_132643) do
   add_foreign_key "lines", "users"
   add_foreign_key "projects", "users"
   add_foreign_key "receipts", "categories"
+  add_foreign_key "receipts", "projects"
   add_foreign_key "receipts", "suppliers"
-  add_foreign_key "receipts", "users"
 end

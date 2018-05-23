@@ -2,14 +2,16 @@
 
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
-  before_action :set_current_user
+  before_action :set_current_project
 
   before_action :set_locale
 
   private
 
-  def set_current_user
-    Current.user = current_user
+  def set_current_project
+    if current_user
+      Current.project = current_user.projects.first
+    end
   end
    
   def set_locale

@@ -6,16 +6,16 @@ class WelcomeController < ApplicationController
 
   def index
 
-    @amountProcessing = current_user.receipts.waiting.count
+    @amountProcessing = Current.project.receipts.waiting.count
     puts @amountProcessing
 
-    if current_user.hasProcessedReceipts
-      @total = current_user.receipts.processed.sum(:value_cents) / 100
+    if Current.project.hasProcessedReceipts
+      @total = Current.project.receipts.processed.sum(:value_cents) / 100
 
-      all = current_user.receipts.processed.includes(:category).group('categories.name').sum(:value_cents)
+      all = Current.project.receipts.processed.includes(:category).group('categories.name').sum(:value_cents)
       @pie_chart_data = all.each { |k, v| all[k] = v / 100 }
-    elsif current_user.hasReceiptsButNoneProcessedYet
-      @receipts = current_user.receipts.waiting
+    elsif Current.project.hasReceiptsButNoneProcessedYet
+      @receipts = Current.project.receipts.waiting
       render 'processing'
     else
       render 'tutorial'

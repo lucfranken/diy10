@@ -28,22 +28,6 @@ class User < ApplicationRecord
   #   self.role ||= :user
   # end
 
-  # Has any receipt at all
-  def hasReceipts
-    Current.user.receipts.all.any?
-  end
-
-  # Has uploaded a receipt but we are not ready with processing
-  def hasReceiptsButNoneProcessedYet
-    hasReceipts && !hasProcessedReceipts
-  end
-
-  # At least one is processed
-  def hasProcessedReceipts
-    Current.user.receipts.processed.any?
-  end
-
-
   def send_admin_mail
     AdminMailer.registration_email.deliver_now
   end

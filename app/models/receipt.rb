@@ -2,7 +2,7 @@
 
 # Main receipt class which groups all data related to one physical/mail receipt
 class Receipt < ApplicationRecord
-  belongs_to :user, default: -> { Current.user }
+  belongs_to :project, default: -> { Current.project }
   belongs_to :supplier, optional: true
   belongs_to :category, optional: true
 
