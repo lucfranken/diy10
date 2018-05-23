@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: Project 1 of John
+  user: john
+
+two:
+  name: Project 1 of Jane
+  user: jane
+
+three:
+  name: Project 2 of Jane so 3
+  user: jane

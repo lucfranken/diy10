@@ -9,6 +9,11 @@ class User < ApplicationRecord
 
   has_many :receipts, dependent: :destroy
 
+  has_many :projects
+
+  after_commit :send_admin_mail, on: :create
+  after_commit :create_default_project, on: :create
+
   enum role: {
     user: 0,
     admin: 99
@@ -39,9 +44,13 @@ class User < ApplicationRecord
   end
 
 
-  after_create :send_admin_mail
   def send_admin_mail
     AdminMailer.registration_email.deliver_now
   end
 
+  def create_default_project
+    project = self.projects.new
+    project.name = 'My project'
+    project.save!
+  end
 end

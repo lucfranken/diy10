@@ -16,7 +16,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     post user_registration_path,
       params: {
         user: {
-        email: 'test12345@example.com',
+        email: 'test_user_flows_test@example.com',
         password: 'password',
         password_confirmation: 'password',
       }
@@ -34,7 +34,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     post user_registration_path,
       params: {
         user: {
-        email: 'test12345@example.com',
+        email: 'test_user_flows_test@example.com',
         password: 'password',
         password_confirmation: 'password',
       }
@@ -54,7 +54,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     post new_user_session_path,
       params: {
         user: {
-        email: 'test12345@example.com',
+        email: 'test_user_flows_test@example.com',
         password: 'password',
       }
     }
